@@ -12,8 +12,7 @@ Investigate the correlation between natural disasters and climate change.
 
 ## Description
 
-<!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-XY is an important problem, because... This projects analyzes XY, using method A. The results can give insights into...
+Climate change influences the occurrence of natural disasters by altering weather patterns and environmental conditions. While it may not directly cause specific events, such as hurricanes or wildfires, it exacerbates their impacts and increases their likelihood. Understanding this relationship is essential for developing effective strategies to mitigate risks and enhance resilience.
 
 ## Datasources
 

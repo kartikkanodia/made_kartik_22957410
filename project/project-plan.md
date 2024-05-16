@@ -8,7 +8,7 @@ Investigate the correlation between natural disasters and climate change.
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. Does writing an example question help students write better project plans?
+1. To what extent does climate change play a role in occurrence of Natural disasters?
 
 ## Description
 

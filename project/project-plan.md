@@ -22,13 +22,13 @@ Climate change influences the occurrence of natural disasters by altering weathe
 * Metadata URL: https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data
 * Data Type: CSV
 
-Short description of the DataSource.
+The dataset from Berkeley Earth Surface Temperature Study, covers global land and ocean temperatures from as early as 1750, with temperature averages and uncertainties provided. The dataset is neatly organized and allows for slicing into subsets by country. Additionally, it includes temperature data at the city, state, and country levels.
 
 ### Datasource2: Kaggle
 * Metadata URL: https://ourworldindata.org/natural-disasters
 * Data Type: CSV
 
-The dataset from Berkeley Earth Surface Temperature Study, covers global land and ocean temperatures from as early as 1750, with temperature averages and uncertainties provided. The dataset is neatly organized and allows for slicing into subsets by country. Additionally, it includes temperature data at the city, state, and country levels. 
+The dataset contains the number of deaths of people from Natural disasters. 
 
 ## Work Packages
 

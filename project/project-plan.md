@@ -3,7 +3,7 @@
 
 ## Title
 <!-- Give your project a short title. -->
-Awesome MADE project.
+Investigate the correlation between natural disasters and climate change.
 
 ## Main Question
 

@@ -28,13 +28,12 @@ Short description of the DataSource.
 * Metadata URL: https://ourworldindata.org/natural-disasters
 * Data Type: CSV
 
-Short description of the DataSource.
+The dataset from Berkeley Earth Surface Temperature Study, covers global land and ocean temperatures from as early as 1750, with temperature averages and uncertainties provided. The dataset is neatly organized and allows for slicing into subsets by country. Additionally, it includes temperature data at the city, state, and country levels. 
 
 ## Work Packages
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. Example Issue [#1][i1]
-2. ...
+1. Issue [#1][i1]
 
 [i1]: https://github.com/jvalue/made-template/issues/1

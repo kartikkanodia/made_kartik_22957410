@@ -19,9 +19,14 @@ XY is an important problem, because... This projects analyzes XY, using method A
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: ExampleSource
-* Metadata URL: https://mobilithek.info/offers/-6901989592576801458
-* Data URL: https://raw.githubusercontent.com/od-ms/radverkehr-zaehlstellen/main/100035541/2019-01.csv
+### Datasource1: Kaggle
+* Metadata URL: https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data
+* Data Type: CSV
+
+Short description of the DataSource.
+
+### Datasource2: Kaggle
+* Metadata URL: https://ourworldindata.org/natural-disasters
 * Data Type: CSV
 
 Short description of the DataSource.

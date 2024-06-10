@@ -26,6 +26,8 @@ KAGGLE_URL = 'https://www.kaggle.com/datasets/headsortails/us-natural-disaster-d
 SELECT_CSV_KAGGLE = 'us_disaster_declarations.csv'
 
 
+
+
 # Create function to receive dataset from Kaggle and return its directory path
 def receive_kaggle_dataset(dataset_url):
     # Extract dataset name from the URL
@@ -36,6 +38,8 @@ def receive_kaggle_dataset(dataset_url):
     api.dataset_download_files(dataset_name, path=local_directory, unzip=True)
     print(f"local_directory is {local_directory} extracted from url {dataset_url}")
     return local_directory
+
+
 
 
 # Create function to clean and transform kaggle data set
@@ -92,6 +96,9 @@ def receive_berkley_dataset(dataset_url):
     print(f"local_directory is {local_directory} extracted from url {dataset_url}")
     return local_directory
 
+
+
+
 # Create function to clean and transform data set
 def clean_dataset_berkley(file_path):
     # read file as dataframe
@@ -137,6 +144,8 @@ def create_sqlite_database(dataframe, db_filename):
     connect_db.close()
 
 
+
+
 # create main function
 def main():
     
@@ -160,5 +169,53 @@ def main():
     print(f"Data from {SELECT_CSV_KAGGLE} processed and saved in {database_file_name}")
 
 
-if __name__ == "__main__":
+
+
+# Validate the pipeline using a test function
+def validate_pipeline():
+
+    # execute the main pipeline and generate clean datasets
     main()
+
+    # Check if the SQLite files are created
+    berkeley_db_path = os.path.join(DATA_DIRECTORY, 'GlobalLandTemperaturesByCountry.sqlite')
+    print(f"berkeley database path {berkeley_db_path}")
+
+    kaggle_db_path = os.path.join(DATA_DIRECTORY, 'us_disaster_declarations.sqlite')
+    print(f"kaggle database path {kaggle_db_path}")
+
+    if os.path.exists(berkeley_db_path):
+        print(f"Berkeley database file found at path: {berkeley_db_path}")
+    else: 
+        print(f"Berkeley database file {berkeley_db_path} does not exist.")
+
+    if os.path.exists(kaggle_db_path):
+        print(f"Kaggle database file found at path: {kaggle_db_path}")
+    else: 
+        print(f"Kaggle database file {kaggle_db_path} does not exist.")
+
+
+    # Check if the SQLite database tables contain any data
+    with sqlite3.connect(berkeley_db_path) as conn_sql:
+        cursor = conn_sql.cursor()
+        cursor.execute("SELECT COUNT(*) FROM data")
+        row_count = cursor.fetchone()[0]
+        if row_count > 0:
+            print(f"Success: {row_count} rows found in Berkeley database table")
+        else:
+            print("Failure: Berkeley database table is empty.")
+
+    with sqlite3.connect(kaggle_db_path) as conn_sql:
+        cursor = conn_sql.cursor()
+        cursor.execute("SELECT COUNT(*) FROM data")
+        row_count = cursor.fetchone()[0]
+        if row_count > 0:
+            print(f"Success: {row_count} rows found in Kaggle database table")
+        else:
+            print("Failure: Kaggle database table is empty.")
+
+
+
+
+if __name__ == "__main__":
+    validate_pipeline()

@@ -169,53 +169,10 @@ def main():
     print(f"Data from {SELECT_CSV_KAGGLE} processed and saved in {database_file_name}")
 
 
-
-
-# Validate the pipeline using a test function
-def validate_pipeline():
-
-    # execute the main pipeline and generate clean datasets
+if __name__ == "__main__":
     main()
 
-    # Check if the SQLite files are created
-    berkeley_db_path = os.path.join(DATA_DIRECTORY, 'GlobalLandTemperaturesByCountry.sqlite')
-    print(f"berkeley database path {berkeley_db_path}")
-
-    kaggle_db_path = os.path.join(DATA_DIRECTORY, 'us_disaster_declarations.sqlite')
-    print(f"kaggle database path {kaggle_db_path}")
-
-    if os.path.exists(berkeley_db_path):
-        print(f"Berkeley database file found at path: {berkeley_db_path}")
-    else: 
-        print(f"Berkeley database file {berkeley_db_path} does not exist.")
-
-    if os.path.exists(kaggle_db_path):
-        print(f"Kaggle database file found at path: {kaggle_db_path}")
-    else: 
-        print(f"Kaggle database file {kaggle_db_path} does not exist.")
-
-
-    # Check if the SQLite database tables contain any data
-    with sqlite3.connect(berkeley_db_path) as conn_sql:
-        cursor = conn_sql.cursor()
-        cursor.execute("SELECT COUNT(*) FROM data")
-        row_count = cursor.fetchone()[0]
-        if row_count > 0:
-            print(f"Success: {row_count} rows found in Berkeley database table")
-        else:
-            print("Failure: Berkeley database table is empty.")
-
-    with sqlite3.connect(kaggle_db_path) as conn_sql:
-        cursor = conn_sql.cursor()
-        cursor.execute("SELECT COUNT(*) FROM data")
-        row_count = cursor.fetchone()[0]
-        if row_count > 0:
-            print(f"Success: {row_count} rows found in Kaggle database table")
-        else:
-            print("Failure: Kaggle database table is empty.")
 
 
 
 
-if __name__ == "__main__":
-    validate_pipeline()

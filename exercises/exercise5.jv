@@ -1,0 +1,77 @@
+
+pipeline DataPipeline {
+
+    ZipExtractor
+        -> DataFilePicker
+        -> DataTextFileInterpreter
+        -> DataCSVInterpreter
+        -> DataTableInterpreter
+        //-> CelsiusToFahrenheitTemperatureTransformer
+        //-> CelsiusToFahrenheitBatteryTemperatureTransformer        
+        -> DataLoader;
+
+
+    // Download the zip file and interpret it.
+    block ZipExtractor oftype GTFSExtractor {
+        url: "https://gtfs.rhoenenergie-bus.de/GTFS.zip";
+    }
+
+
+    // Pick csv file from the zip file 
+    block DataFilePicker oftype FilePicker {
+        path: "/stops.txt";
+    }
+
+
+    block DataTextFileInterpreter oftype TextFileInterpreter { 
+        encoding: 'latin2';
+    }
+    
+
+    block DataCSVInterpreter oftype CSVInterpreter {
+        delimiter: ",";
+        enclosing: '"';
+    }
+
+
+    block DataTableInterpreter oftype TableInterpreter {
+        header: true;
+        columns: [
+            "stop_id" oftype integer,
+            "stop_name" oftype text,
+            "stop_lat" oftype ValidateLatitudeLongitude,
+            "stop_lon" oftype ValidateLatitudeLongitude,
+            "zone_id" oftype ZoneIdFilter,
+        ];
+    }
+
+
+valuetype ZoneIdFilter oftype integer {
+    constraints: [ ZoneIdValue ];
+}
+
+
+constraint ZoneIdValue on integer:
+    value == 1645;
+
+
+    block DataLoader oftype SQLiteLoader {
+        table: "stops";
+        file: "./gtfs.sqlite";
+    }
+
+
+valuetype ValidateLatitudeLongitude oftype decimal {
+    constraints: [
+        ValidateCoordinates,
+    ];
+}
+
+
+constraint ValidateCoordinates oftype RangeConstraint {
+lowerBound: -90;
+upperBound: 90;
+}
+
+
+}

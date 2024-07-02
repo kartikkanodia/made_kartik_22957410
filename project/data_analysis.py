@@ -174,7 +174,7 @@ def analyse_dataframe(temp_disaster_df):
     # Visualizations
 
     # 1. create bar plot to show distribution of incident types
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(12, 10))
     incident_type_distribution.plot(kind='bar', color='skyblue')
     plt.title('Distribution of Incident Types')
     plt.xlabel('Incident Type')
@@ -183,43 +183,43 @@ def analyse_dataframe(temp_disaster_df):
     plt.show()
 
     # 2. create line plot to show year-wise number of incidents
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(12, 8))
     year_wise_incidents.plot(kind='line', marker='o', color='green')
-    plt.title('Year-wise Number of Incidents')
+    plt.title('Number of Incidents per Year')
     plt.xlabel('Year')
     plt.ylabel('Number of Incidents')
     plt.grid(True)
     plt.show()
 
     # 3. create bar plot to show month-wise number of incidents
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(12, 8))
     month_wise_incidents.plot(kind='bar', color='coral')
-    plt.title('Month-wise Number of Incidents')
+    plt.title('Number of Incidents per Month')
     plt.xlabel('Month')
     plt.ylabel('Number of Incidents')
     plt.xticks(rotation=0)
     plt.show()
 
     # 4. create line plot to show year wise average temperature trends
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(12, 8))
     avg_temp_trends_year.plot(kind='line', marker='o', color='blue')
-    plt.title('Average Temperature Trends Over the Years')
+    plt.title('Average Temperature Trends per Year')
     plt.xlabel('Year')
     plt.ylabel('Average Temperature (°C)')
     plt.grid(True)
     plt.show()
 
     # 5. create line plot to show month wise average temperature trends
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(12, 8))
     avg_temp_trends_month.plot(kind='line', marker='o', color='purple')
-    plt.title('Average Temperature Trends Over the Months')
+    plt.title('Average Temperature Trends per Month')
     plt.xlabel('Month')
     plt.ylabel('Average Temperature (°C)')
     plt.grid(True)
     plt.show()
 
     # 6. create heatmap to show correlation matrix
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(11, 11))
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
     plt.title('Correlation Matrix')
     plt.show()

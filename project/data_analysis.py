@@ -155,25 +155,25 @@ def join_dataframe(temp_dataframe, disaster_dataframe):
 def analyse_dataframe(temp_disaster_df):
 
 
-    # Distribution of Incident Types
+    # calculate distribution of incident types
     incident_type_distribution = temp_disaster_df['incident_type'].value_counts()
 
-    # Year-wise and Month-wise Analysis
+    # calculate year-wise and month-wise analysis
     year_wise_incidents = temp_disaster_df.groupby('year').size()
     month_wise_incidents = temp_disaster_df.groupby('month').size()
 
-    # Average Temperature Trends
+    # calculate average temperature trends
     avg_temp_trends_year = temp_disaster_df.groupby('year')['avg_temp'].mean()
     avg_temp_trends_month = temp_disaster_df.groupby('month')['avg_temp'].mean()
 
-    # Correlation Analysis (excluding non-numeric columns)
+    # calculate correlation analysis
     numeric_df = temp_disaster_df.select_dtypes(include='number')
     correlation_matrix = numeric_df.corr()
 
 
     # Visualizations
 
-    # 2. Distribution of Incident Types - Bar plot
+    # 1. create bar plot to show distribution of incident types
     plt.figure(figsize=(12, 6))
     incident_type_distribution.plot(kind='bar', color='skyblue')
     plt.title('Distribution of Incident Types')
@@ -182,7 +182,7 @@ def analyse_dataframe(temp_disaster_df):
     plt.xticks(rotation=45)
     plt.show()
 
-    # 3. Year-wise Number of Incidents - Line plot
+    # 2. create line plot to show year-wise number of incidents
     plt.figure(figsize=(12, 6))
     year_wise_incidents.plot(kind='line', marker='o', color='green')
     plt.title('Year-wise Number of Incidents')
@@ -191,7 +191,7 @@ def analyse_dataframe(temp_disaster_df):
     plt.grid(True)
     plt.show()
 
-    # 4. Month-wise Number of Incidents - Bar plot
+    # 3. create bar plot to show month-wise number of incidents
     plt.figure(figsize=(12, 6))
     month_wise_incidents.plot(kind='bar', color='coral')
     plt.title('Month-wise Number of Incidents')
@@ -200,7 +200,7 @@ def analyse_dataframe(temp_disaster_df):
     plt.xticks(rotation=0)
     plt.show()
 
-    # 5. Average Temperature Trends Over the Years - Line plot
+    # 4. create line plot to show year wise average temperature trends
     plt.figure(figsize=(12, 6))
     avg_temp_trends_year.plot(kind='line', marker='o', color='blue')
     plt.title('Average Temperature Trends Over the Years')
@@ -209,7 +209,7 @@ def analyse_dataframe(temp_disaster_df):
     plt.grid(True)
     plt.show()
 
-    # 6. Average Temperature Trends Over the Months - Line plot
+    # 5. create line plot to show month wise average temperature trends
     plt.figure(figsize=(12, 6))
     avg_temp_trends_month.plot(kind='line', marker='o', color='purple')
     plt.title('Average Temperature Trends Over the Months')
@@ -218,7 +218,7 @@ def analyse_dataframe(temp_disaster_df):
     plt.grid(True)
     plt.show()
 
-    # 7. Correlation Matrix - Heatmap
+    # 6. create heatmap to show correlation matrix
     plt.figure(figsize=(10, 8))
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
     plt.title('Correlation Matrix')
@@ -251,8 +251,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
